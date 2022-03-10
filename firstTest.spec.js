@@ -57,7 +57,7 @@ describe('Our first test suit', () => {
         cy.contains("nb-card", 'Using the Grid').find('[for="inputPassword2"]').should('contain', 'Password')
 
     })
-    it('Ebal rot etogo syntaxa', () => {
+    it('Const and wraps', () => {
         cy.visit('/')
         cy.contains('Forms').click()
         cy.contains('Form Layouts').click()
