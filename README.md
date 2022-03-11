@@ -1,1 +1,1 @@
-Tests that I do to explore Cypres
+Tests that I do to explore Cypress
