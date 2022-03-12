@@ -57,7 +57,7 @@ describe('Our first test suit', () => {
         cy.contains("nb-card", 'Using the Grid').find('[for="inputPassword2"]').should('contain', 'Password')
 
     })
-    it('Const and wraps', () => {
+    it('Ebal rot etogo syntaxa', () => {
         cy.visit('/')
         cy.contains('Forms').click()
         cy.contains('Form Layouts').click()
@@ -163,7 +163,7 @@ describe('Our first test suit', () => {
 
 
     })
-    it.only("Web tables", () => {
+    it("Web tables", () => {
         cy.visit('/')
         cy.contains('Tables & Data').click()
         cy.contains('Smart Table').click()
@@ -173,5 +173,28 @@ describe('Our first test suit', () => {
             cy.wrap(tableRow).find('[class=nb-checkmark]').click()
             cy.wrap(tableRow).find('td').eq(6).should("contain", '25')
         })
+    })
+    it.only("Pop Ups and ToolTips", () => {
+
+        cy.visit('/')
+        cy.contains('Modal & Overlays').click()
+        cy.contains('Tooltip').click()
+        cy.contains('nb-card', 'Colored Tooltips')
+            .contains("Default").click()
+        cy.get('nb-tooltip').should('contain', 'This is a tooltip')
+
+    })
+    it.only('Dialog box', () => {
+        cy.visit('/')
+        cy.contains('Tables & Data').click()
+        cy.contains('Smart Table').click()
+        const stub = cy.stub()
+        cy.on('window:confirm', stub)
+        cy.get('tbody tr').first().find('.nb-trash').click().then(() => {
+            expect(stub.getCall(0)).to.be.calledWith('Are you sure you want to delete?')
+
+        }
+        )
+
     })
 })
